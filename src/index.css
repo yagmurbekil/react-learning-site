@@ -1,52 +1,59 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-blue: #61dafb;
-  --color-brand-dark: #0f172a;
-  --color-brand-darker: #020617;
-  --color-brand-light: #f8fafc;
-  --color-brand-gray: #334155;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --color-primary: #6366f1; /* Indigo */
+  --color-secondary: #14b8a6; /* Teal */
+  --color-accent: #f43f5e; /* Rose */
+  --color-dark-bg: #0a0a0f;
+  --color-panel-bg: #13131a;
+  --color-panel-border: #272732;
+  --font-sans: "Outfit", "Inter", system-ui, sans-serif;
 }
 
 @layer base {
   :root {
-    --background: #020617;
+    --background: #0a0a0f;
     --foreground: #f8fafc;
   }
   
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: "Outfit", "Inter", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, transparent 70%);
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #334155;
+    background: #272732;
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #475569;
+    background: #3f3f5a;
   }
 }
 
 @layer utilities {
-  .glass-panel {
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+  .dashboard-panel {
+    background: rgba(19, 19, 26, 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .soft-glow {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
   }
   
   .text-gradient {
-    background: linear-gradient(to right, #61dafb, #a855f7);
+    background: linear-gradient(135deg, #6366f1, #14b8a6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { topicsData } from '../data/topics';
 import { CodeBlock } from '../components/common/CodeBlock';
-import { Lightbulb, Info, MonitorPlay } from 'lucide-react';
+import { Info, Cpu } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 // Demos
@@ -40,53 +40,56 @@ export function TopicContent() {
   return (
     <motion.div 
       key={topic.id}
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
+      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
       transition={{ duration: 0.3 }}
-      className="max-w-4xl"
+      className="max-w-5xl mx-auto"
     >
-      <div className="mb-8">
-        <span className="text-brand-blue font-semibold text-sm mb-2 block tracking-wider uppercase">
+      <div className="mb-10 dashboard-panel p-8 rounded-2xl relative overflow-hidden border-t-2 border-t-indigo-500">
+        <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
+          <Cpu size={120} />
+        </div>
+        <span className="text-indigo-400 font-semibold text-xs mb-3 block tracking-widest uppercase">
           {topic.categoryTitle}
         </span>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
           {topic.title}
         </h1>
-        <p className="text-xl text-slate-300 leading-relaxed">
+        <p className="text-lg text-slate-400 leading-relaxed max-w-3xl">
           {topic.description}
         </p>
-      </div>
-
-      <div className="bg-brand-blue/10 border border-brand-blue/20 rounded-xl p-5 mb-10 flex gap-4 text-brand-blue/90">
-        <Lightbulb className="shrink-0 mt-1" />
-        <div>
-          <h4 className="font-bold mb-1 text-white">Gerçek Hayat Benzetmesi</h4>
-          <p className="text-sm leading-relaxed">{topic.analogy}</p>
-        </div>
-      </div>
-
-      <div className="mb-10">
-        <h2 className="text-2xl font-bold text-white mb-4 border-b border-slate-800 pb-2 flex items-center gap-2">
-          <Info size={24} className="text-purple-400" />
-          Kod Örneği
-        </h2>
-        <CodeBlock code={topic.code} title={`${topic.id}.tsx`} />
         
-        <div className="bg-slate-800/50 rounded-xl p-5 border border-slate-700/50 mt-4">
-          <h4 className="font-semibold text-white mb-2 text-sm">Bu kod ne yapıyor?</h4>
-          <p className="text-slate-300 text-sm leading-relaxed">{topic.codeExplanation}</p>
+        <div className="mt-8 bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-5 text-indigo-200 text-sm flex gap-4 relative z-10">
+          <div className="w-1.5 h-full absolute left-0 top-0 bg-indigo-500 rounded-l-xl"></div>
+          <div>
+            <strong className="text-white block mb-1">Kavramsal Bakış:</strong>
+            {topic.analogy}
+          </div>
         </div>
       </div>
+
+      {!topic.demoId && (
+        <div className="mb-12">
+          <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <Info size={20} className="text-teal-400" />
+            Örnek Uygulama
+          </h2>
+          <CodeBlock code={topic.code} title={`${topic.id}.tsx`} />
+          <div className="dashboard-panel rounded-xl p-5 border border-white/5 mt-4">
+            <h4 className="font-semibold text-white mb-2 text-sm">Satır Satır Analiz</h4>
+            <p className="text-slate-400 text-sm leading-relaxed">{topic.codeExplanation}</p>
+          </div>
+        </div>
+      )}
 
       {topic.demoId && DEMOS[topic.demoId] && (
-        <div className="mt-16">
-          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <MonitorPlay size={24} className="text-green-400" />
-            İnteraktif Demo
-          </h2>
-          <div className="glass-panel rounded-2xl p-6 md:p-8">
-            {DEMOS[topic.demoId]}
+        <div className="mt-8 mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-px bg-white/10 flex-1"></div>
+            <h2 className="text-sm font-bold text-slate-500 tracking-widest uppercase">İnteraktif Laboratuvar</h2>
+            <div className="h-px bg-white/10 flex-1"></div>
           </div>
+          {DEMOS[topic.demoId]}
         </div>
       )}
     </motion.div>

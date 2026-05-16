@@ -14,7 +14,7 @@ const LinkedinIcon = () => (
 const Footer: React.FC = () => (
   <footer className="bg-[#01030b] border-t border-white/10 pt-16 pb-8">
     <div className="max-w-7xl mx-auto px-6">
-      <div className="grid md:grid-cols-3 gap-12 mb-12">
+      <div className="grid md:grid-cols-2 gap-12 mb-12">
         <div>
           <div className="flex items-center gap-2 text-brand-blue mb-4">
             <span className="text-2xl font-bold text-white tracking-wide">ReactÖğren</span>
@@ -24,26 +24,13 @@ const Footer: React.FC = () => (
           </p>
         </div>
         <div>
-          <h4 className="text-white font-semibold mb-4">Hızlı Bağlantılar</h4>
-          <ul className="space-y-2 text-sm text-gray-400">
-            <li><a href="#hero" className="hover:text-brand-blue transition-colors">Ana Sayfa</a></li>
-            <li><a href="#components" className="hover:text-brand-blue transition-colors">Bileşenler</a></li>
-            <li><a href="#props" className="hover:text-brand-blue transition-colors">Props</a></li>
-            <li><a href="#state" className="hover:text-brand-blue transition-colors">State Yönetimi</a></li>
-            <li><a href="#hooks" className="hover:text-brand-blue transition-colors">React Hooks</a></li>
-          </ul>
-        </div>
-        <div>
           <h4 className="text-white font-semibold mb-4">İletişim</h4>
-          <p className="text-sm text-gray-400 mb-4">Proje hakkında sorularınız için bize ulaşın.</p>
+          <p className="text-sm text-gray-400 mb-4">Proje hakkında sorularınız için bana ulaşabilirsiniz.</p>
           <div className="flex gap-4">
-            <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-blue transition-all">
+            <a href="https://github.com/yagmurbekil" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-blue transition-all">
               <GithubIcon />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-blue transition-all">
-              <TwitterIcon />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-blue transition-all">
+            <a href="https://www.linkedin.com/in/ya%C4%9Fmurbekil/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-blue transition-all">
               <LinkedinIcon />
             </a>
           </div>

@@ -1,104 +1,78 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Code2, Zap, Layout, Shield, ArrowRight } from 'lucide-react';
-
-const features = [
-  { icon: <Zap className="text-yellow-400" />, title: "İnteraktif Öğrenme", desc: "Sadece okumayın, her konuyu anında çalışan demolarla deneyimleyin." },
-  { icon: <Code2 className="text-brand-blue" />, title: "Modern TSX", desc: "En güncel React 19 ve TypeScript pratikleriyle kod yazmayı öğrenin." },
-  { icon: <Layout className="text-purple-400" />, title: "Gerçek Proje Deneyimi", desc: "Bileşen mimarisi, state yönetimi ve router gibi gelişmiş konular." },
-  { icon: <Shield className="text-green-400" />, title: "Best Practices", desc: "Sektör standartlarında temiz kod (clean code) prensiplerini kavrayın." },
-];
 
 export function Home() {
   return (
-    <div className="flex flex-col items-center">
+    <div className="relative w-full flex flex-col bg-background font-sans overflow-x-hidden min-h-screen">
+      {/* Fixed Fullscreen Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark Gradient Overlay for readability when scrolling */}
+      <div className="fixed inset-0 bg-background/40 z-0 pointer-events-none" />
+
+      {/* Navigation Bar */}
+      <nav className="relative z-10 flex flex-row items-center justify-between px-8 py-6 max-w-7xl w-full mx-auto">
+        <Link 
+          to="/" 
+          className="text-3xl tracking-tight text-foreground font-normal" 
+          style={{ fontFamily: 'var(--font-display)' }}
+        >
+          ReactÖğren<sup className="text-xs">®</sup>
+        </Link>
+        <div className="hidden md:flex gap-8 items-center">
+          <Link to="/" className="text-sm text-foreground transition-colors">Ana Sayfa</Link>
+          <Link to="/topics" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Eğitimler</Link>
+          <a href="#hakkinda" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Hakkında</a>
+        </div>
+        <Link 
+          to="/topics" 
+          className="liquid-glass rounded-full px-6 py-2.5 text-sm text-foreground hover:scale-[1.03] transition-transform hidden md:block"
+        >
+          Eğitime Başla
+        </Link>
+      </nav>
+
       {/* Hero Section */}
-      <section className="w-full max-w-6xl mx-auto px-4 md:px-6 pt-20 pb-32 flex flex-col lg:flex-row items-center gap-12">
-        <div className="flex-1 text-center lg:text-left space-y-8">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }} 
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-sm text-brand-blue font-medium"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
-            </span>
-            React 19 & TypeScript Destekli
-          </motion.div>
-          
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1]">
-            Sıfırdan <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-purple-500">React</span> ve <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">TSX</span> Öğren
-          </h1>
-          
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            Modern web geliştirmenin temel taşı olan React'i, interaktif örnekler, temiz kod blokları ve en iyi pratiklerle keşfedin. Gerçek bir projede ihtiyaç duyacağınız tüm konular burada.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-            <Link to="/topics" className="w-full sm:w-auto px-8 py-4 bg-brand-blue text-slate-900 font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-brand-blue/90 hover:-translate-y-1 transition-all shadow-[0_0_30px_rgba(97,218,251,0.4)]">
-              Eğitime Başla <ArrowRight size={20} />
-            </Link>
-            <Link to="/topics/react-nedir" className="w-full sm:w-auto px-8 py-4 bg-slate-800 text-white font-medium rounded-xl border border-slate-700 hover:bg-slate-700 transition-all flex items-center justify-center gap-2">
-              Müfredatı İncele
-            </Link>
-          </div>
-        </div>
+      <main className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-100px)] text-center px-6 pb-20">
+        <h1 
+          className="text-5xl sm:text-7xl md:text-8xl leading-[0.95] tracking-[-2.46px] max-w-7xl font-normal text-foreground animate-fade-rise" 
+          style={{ fontFamily: 'var(--font-display)' }}
+        >
+          Sıfırdan <em className="not-italic text-muted-foreground">React</em> ve <em className="not-italic text-muted-foreground">TSX Öğren.</em>
+        </h1>
+        
+        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mt-8 leading-relaxed animate-fade-rise-delay">
+          Modern web geliştirmenin temel taşı olan React'i, interaktif örnekler ve temiz kodlarla keşfedin. Karmaşanın ortasında, odaklanmış ve ilham verici bir öğrenme alanı inşa ediyoruz.
+        </p>
+        
+        <Link 
+          to="/topics" 
+          className="liquid-glass rounded-full px-14 py-5 text-base text-foreground mt-12 hover:scale-[1.03] cursor-pointer transition-transform animate-fade-rise-delay-2 inline-flex"
+        >
+          Eğitime Başla
+        </Link>
+      </main>
 
-        <div className="flex-1 w-full max-w-lg lg:max-w-none relative">
-          <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue/20 to-purple-500/20 blur-3xl rounded-full"></div>
-          <div className="relative glass-panel rounded-2xl p-2 border border-slate-700/50 shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
-            <div className="bg-[#1e1e1e] rounded-xl overflow-hidden border border-slate-800">
-              <div className="flex items-center gap-2 px-4 py-3 bg-[#252526] border-b border-black/50">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <span className="ml-2 text-xs text-slate-400 font-mono">App.tsx</span>
-              </div>
-              <div className="p-5 text-sm font-mono leading-relaxed overflow-x-auto text-slate-300">
-                <span className="text-purple-400">import</span> {'{ useState }'} <span className="text-purple-400">from</span> <span className="text-green-300">'react'</span>;<br/><br/>
-                <span className="text-purple-400">export default function</span> <span className="text-yellow-200">App</span>() {'{'}<br/>
-                {'  '}<span className="text-purple-400">const</span> [count, setCount] = <span className="text-blue-300">useState</span>(<span className="text-orange-300">0</span>);<br/><br/>
-                {'  '}<span className="text-purple-400">return</span> (<br/>
-                {'    '}&lt;<span className="text-blue-400">div</span> <span className="text-cyan-300">className</span>=<span className="text-green-300">"p-4 flex gap-4"</span>&gt;<br/>
-                {'      '}&lt;<span className="text-blue-400">h1</span>&gt;Count: {'{count}'}&lt;/<span className="text-blue-400">h1</span>&gt;<br/>
-                {'      '}&lt;<span className="text-blue-400">button</span> <span className="text-cyan-300">onClick</span>={'{() => '} <span className="text-blue-300">setCount</span>(c =&gt; c + <span className="text-orange-300">1</span>){'}'}&gt;<br/>
-                {'        '}Arttır<br/>
-                {'      '}&lt;/<span className="text-blue-400">button</span>&gt;<br/>
-                {'    '}&lt;/<span className="text-blue-400">div</span>&gt;<br/>
-                {'  '});<br/>
-                {'}'}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="w-full border-y border-slate-800 bg-slate-900/30">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Neden Bu Platform?</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">Teorik bilgileri sıkıcı metinlerle değil, modern tasarıma sahip interaktif ve anlaşılır modüllerle öğrenin.</p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feat, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="glass-panel p-6 rounded-2xl hover:-translate-y-2 transition-all duration-300 group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  {feat.icon}
-                </div>
-                <h3 className="text-lg font-bold mb-2 text-white">{feat.title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">{feat.desc}</p>
-              </motion.div>
-            ))}
+      {/* About Section */}
+      <section id="hakkinda" className="relative z-10 w-full bg-background/80 backdrop-blur-2xl border-t border-white/5 py-32 px-6">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <h2 className="text-4xl md:text-5xl text-foreground font-normal tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
+            Neden <em className="not-italic text-muted-foreground">ReactÖğren?</em>
+          </h2>
+          <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
+            <p>
+              React, modern web uygulamaları geliştirmek için oluşturulmuş güçlü ve esnek bir kütüphanedir. Ancak karmaşık dokümantasyonlar ve dağınık kaynaklar arasında kaybolmak çok kolaydır.
+            </p>
+            <p>
+              Bu platformun amacı; React ve TypeScript tabanlı modern web geliştirme süreçlerini en yalın, estetik ve anlaşılır biçimde size sunmaktır. Sadece kod yazmayı değil, <strong>doğru ve temiz kod yazmayı</strong> interaktif demolar ve gerçek dünya örnekleriyle öğretiyoruz.
+            </p>
           </div>
         </div>
       </section>

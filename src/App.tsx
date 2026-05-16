@@ -8,12 +8,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route element={<MainLayout />}>
           <Route path="topics" element={<TopicsLayout />}>
             <Route path=":id" element={<TopicContent />} />
           </Route>
-          <Route path="*" element={<div className="flex items-center justify-center h-screen text-2xl font-bold">Sayfa Bulunamadı</div>} />
+          <Route path="*" element={<div className="flex items-center justify-center h-screen text-2xl font-bold text-slate-200">Sayfa Bulunamadı</div>} />
         </Route>
       </Routes>
     </BrowserRouter>

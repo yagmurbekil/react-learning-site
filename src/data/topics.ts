@@ -124,7 +124,7 @@ export const topicsData: Category[] = [
         categoryId: 'typescript',
         title: 'Interface ve Type',
         description: 'React bileşenlerine gönderilen propların ve state verilerinin şeklini tanımlar.',
-        analogy: 'Bir kulübe girmek için gereken VIP kartın üzerindeki bilgilerin listesidir.',
+        analogy: 'Bir kargo paketinin üzerinde yazması gereken gönderici, alıcı ve adres gibi zorunlu bilgilerin şablonudur.',
         code: `interface UserProps {\n  name: string;\n  age: number;\n  isAdmin?: boolean;\n}\n\nfunction UserCard({ name, age, isAdmin }: UserProps) {\n  return <div>{name} ({age})</div>;\n}`,
         codeExplanation: 'UserProps interface\'i beklenen verilerin tiplerini tanımlar.'
       },

@@ -11,16 +11,16 @@ export function MainLayout() {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-brand-darker selection:bg-brand-blue/30 selection:text-white">
-      {/* Background Glow */}
+    <div className="min-h-screen flex flex-col bg-background text-foreground font-sans selection:bg-white/20 selection:text-white">
+      {/* Background glow can be adapted to the navy theme or removed, let's keep a subtle white/blue glow for depth */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-brand-blue/5 blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-purple-500/5 blur-[120px]" />
+        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-white/5 blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-400/5 blur-[120px]" />
       </div>
 
       <Navbar />
       
-      <main className="flex-grow pt-20 z-10">
+      <main className="flex-grow pt-24 z-10 px-4 md:px-8 pb-12">
         <motion.div
           key={pathname}
           initial={{ opacity: 0, y: 10 }}
@@ -31,8 +31,8 @@ export function MainLayout() {
         </motion.div>
       </main>
       
-      <footer className="border-t border-slate-800 py-8 text-center text-slate-500 text-sm z-10 bg-slate-900/50">
-        <p>© 2026 ReactMastery. Tüm hakları saklıdır. Modern ve Premium Eğitim Platformu.</p>
+      <footer className="border-t border-white/10 py-8 text-center text-muted-foreground text-sm z-10 bg-background/50 backdrop-blur-sm">
+        <p>© 2026 ReactÖğren. Tüm hakları saklıdır. Modern ve İnteraktif Eğitim Platformu.</p>
       </footer>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
+import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 
 export function MainLayout() {
@@ -31,9 +32,7 @@ export function MainLayout() {
         </motion.div>
       </main>
       
-      <footer className="border-t border-white/10 py-8 text-center text-muted-foreground text-sm z-10 bg-background/50 backdrop-blur-sm">
-        <p>© 2026 ReactÖğren. Tüm hakları saklıdır. Modern ve İnteraktif Eğitim Platformu.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
